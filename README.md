@@ -1,11 +1,10 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project for Bloc Full Stack Web Development
+Self Destructing To Do List
 
-Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.2.0
 
 * System dependencies
 
@@ -21,7 +20,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+https://blocitoff-tp.herokuapp.com
 
 
 Please feel free to use a different markup language if you do not plan to run
