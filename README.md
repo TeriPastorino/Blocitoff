@@ -1,8 +1,9 @@
 == README
 
-Project for Bloc Full Stack Web Development
-Self Destructing To Do List
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
+Things you may want to cover:
 
 * Ruby version 2.2.0
 
@@ -20,7 +21,7 @@ Self Destructing To Do List
 
 * Deployment instructions
 
-https://blocitoff-tp.herokuapp.com
+* ...
 
 
 Please feel free to use a different markup language if you do not plan to run
