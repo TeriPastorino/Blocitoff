@@ -1,52 +1,44 @@
 require 'rails_helper'
 
 describe "signup page" do
-  it "should have the content 'User Registration'" do
-    visit '/new_user'
-    page.should have_content ('User Registration')
+  it "should have the content 'Sign up'" do
+    visit new_user_registration_path
+    expect(page).to have_content('Sign up')
   end
 end
 
 describe "signup flow" do
 
-    within 'form' do
-          click_button 'Sign Up'
-        end
+  describe "successful" do
+    it "redirects to the new user form" do
+      visit root_path
 
-    describe "successful" do
-      it "redirects to the new user form" do
-        user = create(:user)
-        visit root_path
+      click_link 'Sign Up'
 
-        within '.user-info' do
-          click_link 'Sign Up'
-        end
-        fill_in 'Username', with: user.name
-        fill_in 'Email', with: user.email
-        fill_in 'Password', with: user.password
+      fill_in 'Username', with: 'tpasto'
+      fill_in 'Email', with: 'tpasto@comcast.net'
+      fill_in 'Password', with: 'password'
 
-        click_button('user.form.submit')
-
-         expect(page).to have_content(expected_error)
-      end
+      click_button('Sign up')
     end
   end
-# spec/features/user_creates_a_foobar_spec.rb
+end
 
-feature "Sign up" do
-      background do
-        User.make(:email => 'user@example.com', :password => 'caplin')
-      end
+describe "Sign up" do
+  before do
+    User.make(:email => 'user@example.com', :password => 'caplin')
+  end
 
-      scenario "Signing in with correct credentials" do
-        visit '/sessions/new'
-        within("#session") do
-          fill_in 'Login', :with => 'user@example.com'
-          fill_in 'Password', :with => 'caplin'
-        end
-        click_link 'Sign in'
-        page.should have_content 'Success'
-      end
+  scenario "Signing in with correct credentials" do
+    visit '/sessions/new'
+    within("#session") do
+      fill_in 'Login', :with => 'user@example.com'
+      fill_in 'Password', :with => 'caplin'
+    end
+    click_link 'Sign in'
+    page.should have_content 'Success'
+  end
+end
 
 
 #fill_in('First Name', :with => 'John', 'Last Name', :with=> 'Doe')
