@@ -7,40 +7,30 @@ describe "signup page" do
   end
 end
 
-describe "signup flow" do
-
-  describe "successful" do
-    it "redirects to the new user form" do
-      visit root_path
-
-      click_link 'Sign Up'
+#trying to figure out how to set up data and how to test for confirmation
+  describe "user registration" do
+    
+    it "new user signs up and receives confirmation" do
+      visit new_user_registration_path
 
       fill_in 'Username', with: 'tpasto'
       fill_in 'Email', with: 'tpasto@comcast.net'
       fill_in 'Password', with: 'password'
 
-      click_button('Sign up')
+      expect(page).to have_content
+      #click_button 'Sign up'
     end
   end
-end
 
-describe "Sign up" do
-  before do
-    User.make(:email => 'user@example.com', :password => 'caplin')
-  end
-
-  scenario "Signing in with correct credentials" do
-    visit '/sessions/new'
-    within("#session") do
-      fill_in 'Login', :with => 'user@example.com'
-      fill_in 'Password', :with => 'caplin'
+#
+describe "valid email" do
+  it "checks valid email address" do
+      fill_in 'Email', with: 'user@example.com'
+      fill_in 'Password', with: 'password'
     end
-    click_link 'Sign in'
-    page.should have_content 'Success'
+    #click_button 'Log in'
   end
+
+describe "unique email address" do
 end
 
-
-#fill_in('First Name', :with => 'John', 'Last Name', :with=> 'Doe')
-#fill_in('Password', :with => 'Seekrit')
-#expect(page).to have_field("Username", with: "Joe")

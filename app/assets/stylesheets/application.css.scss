@@ -5,7 +5,6 @@
  .jumbotron {
     background-color:#b2d9d8;
     color: #6e4942;
-    
 }
 
 a {
@@ -15,10 +14,17 @@ a {
 .btn {
   background-color: #8bb3b5;
   border-color: #8bb3b5;
-
 }
 
 .btn-info:hover {
   background-color: #cce3e0;
   border-color: #8bb3b5#cce3e0;
+}
+
+.user-info {
+  margin-top: 9px;
+}
+
+.nav {
+  margin-top: 5px;
 }
