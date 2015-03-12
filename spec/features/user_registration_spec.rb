@@ -23,7 +23,7 @@ require 'rails_helper'
   end
 
   describe "authenticate" do
-  #  before do 
+    before do 
       visit new_user_registration_path
     
         fill_in 'Username', with: 'username'
@@ -34,6 +34,7 @@ require 'rails_helper'
     
       expect('Email').not_to eq(" ")
   end
+end
       
     
 
