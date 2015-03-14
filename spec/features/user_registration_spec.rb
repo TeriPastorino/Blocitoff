@@ -70,7 +70,8 @@ end
 describe "Signing in" do
   describe "successfully" do
     it "displays a flash message indicating success" do
-      user = create(:user) #create user and save to db
+      create(:user).email #create user and save to db
+      create(:user).password
       visit user_session_path #visit users/sign_in page
 
       fill_in 'Email', with: 'user.email'
