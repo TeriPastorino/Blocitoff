@@ -12,6 +12,7 @@ def signup(username, email, password)
 end
 
 describe "User registration" do
+
   describe "Without validation errors" do
     it "should have the content 'Sign up'" do
       visit new_user_registration_path
@@ -19,17 +20,20 @@ describe "User registration" do
     end
   end
 
+describe "witout validation errors" do
   it "redirects to the index page" do
     signup('newuser', 'newuser@example.com', 'password')
     expect(current_path).to eq "/"
     expect(page).to have_content('activate')
   end  
 end
+end
 
 
 describe "confirm user" do
-  it "sends a confirmation email" do
     let(:current_email) {ActionMailer::Base.deliveries.last}
+    it "sends a confirmation email" do
+
     # This is what let does for us
     # def current_email
     #   # memoize the response
@@ -59,25 +63,35 @@ describe "using an already existing email" do
   end
 end
 
-def signin(username, email, password)
-  visit user_session_path
-  fill_in 'Username', with: username
-  fill_in 'Email', with: email
-  fill_in 'Password', with: password
-  fill_in 'Password confirmation', with: password
-  click_button 'Sign in'
-end
+
+#end
 # As a user, I want to sign in and out of Blocitoff.
  
 describe "Signing in" do
   describe "successfully" do
-    signin('newuser','existin@example.com','password')
+    it "displays a flash message indicating success" do
+      user = create(:user) #create user and save to db
+      visit user_session_path #visit users/sign_in page
 
-    it "displays a flash message indicating success"
-    expect(page).to have_content("Signed in successfully")
+      fill_in 'Email', with: 'user.email'
+      fill_in 'Password', with: 'user.password'
+      click_button 'Sign In'
+      expect(current_path).to eq "/" #error getting 
+
+    expect(page).to have_content("Hello 'user.email'")
   end
 end
+end
+
+
  
-  describe "unsuccsfully" do
-    it "re-renders the page"
-  end
+describe "unsuccesfully" do
+  it "re-renders the page" do
+    visit user_session_path
+    fill_in 'Email', with: 'existing@example.com'
+    fill_in 'Password', with: 'password'
+    click_button 'Sign In'
+ expect(page).to have_content("Invalid email or password")
+
+end
+end
