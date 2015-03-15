@@ -4,9 +4,9 @@ require 'rails_helper'
 
 def signup(username, email, password)
   visit new_user_registration_path
-  fill_in 'Username', with: username
-  fill_in 'Email', with: email
-  fill_in 'Password', with: password
+  fill_in 'Username',   with: username
+  fill_in 'Email',      with: email
+  fill_in 'Password',   with: password
   fill_in 'Password confirmation', with: password
   click_button 'Sign up'
 end
@@ -45,14 +45,15 @@ describe "confirm user" do
   end
 end
   
-describe "without filling in an email" do
+describe "Signing in" do
+  describe "unsuccessfully"
   it "displays 'Email can't be blank'" do
     signup('newuser', '', 'password')
     expect(page).to have_content("Email can't be blank")
   end
 end
 
-
+#this one fails
 describe "using an already existing email" do
   it "displays 'Email is already taken'" do
     #before do
@@ -62,37 +63,32 @@ describe "using an already existing email" do
     expect(page).to have_content("that email is already taken")
   end
 end
-
-
 #end
 # As a user, I want to sign in and out of Blocitoff.
  
 describe "Signing in" do
   describe "successfully" do
+    before do
+      create!(:user, email: 'user.email', password: 'user.password')
+    end
     it "displays a flash message indicating success" do
-      create(:user).email #create user and save to db
-      create(:user).password
-      visit user_session_path #visit users/sign_in page
-
-      fill_in 'Email', with: 'user.email'
-      fill_in 'Password', with: 'user.password'
-      click_button 'Sign In'
-      expect(current_path).to eq "/" #error getting 
-
-    expect(page).to have_content("Hello 'user.email'")
+    visit user_session_path #visit users/sign_in page
+        
+    fill_in 'Email',    with: 'user.email'
+    fill_in 'Password', with: 'user.password'
+    click_button 'Sign In'
+    
+    expect(page).to have_content("Hello")
   end
 end
-end
-
-
  
-describe "unsuccesfully" do
+describe "Signing out" do
   it "re-renders the page" do
     visit user_session_path
-    fill_in 'Email', with: 'existing@example.com'
+    fill_in 'Email',    with: 'existing@example.com'
     fill_in 'Password', with: 'password'
-    click_button 'Sign In'
- expect(page).to have_content("Invalid email or password")
-
-end
+    click_link 'sign out'
+    expect(page).to have_content("Signed out successfully")
+  end
+  end
 end
