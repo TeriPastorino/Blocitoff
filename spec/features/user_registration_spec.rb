@@ -2,9 +2,9 @@ require 'rails_helper'
 
 #include TestFactories
 
-def signup(username, email, password)
+def signup(name, email, password)
   visit new_user_registration_path
-  fill_in 'Username',   with: username
+  fill_in 'Name',   with: name
   fill_in 'Email',      with: email
   fill_in 'Password',   with: password
   fill_in 'Password confirmation', with: password
