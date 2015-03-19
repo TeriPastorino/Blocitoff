@@ -18,17 +18,19 @@ user.update_attributes!(
    email: 'tpasto@comcast.net',
    password: 'password'
  )
+
+
 #create my list
 10.times do
   list = List.create!(
     user: users.sample,
-    title: Faker::Lorem,characters(10)
+    name: Faker::Lorem.sentence(10)
     )
 end
+lists = List.all
 
 10.times do
   item = Item.create!(
-    user: users.sampe,
     list: lists.sample,
     description: Faker::Lorem.sentence
     )

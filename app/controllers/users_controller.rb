@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @list = @user.lists
+    #@item = @user.list
   end
 
   private

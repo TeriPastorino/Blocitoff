@@ -6,11 +6,10 @@
   <div class="col-md-8">
     <ul class = "list-group" >
       <h3 class="text-center">My To Do's</h3>
-
+        <% @user.lists.each do |list| %>
       <%= render 'items/form' %>
+      <% end %>
       </ul>
     </div>
   </div>
-</div>
 
-</body>

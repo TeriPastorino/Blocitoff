@@ -1,13 +1,11 @@
-class CreateItems < ActiveRecord::Migration
+class CreateLists < ActiveRecord::Migration
   def change
-
-    
-    create_table :items do |t|
+    create_table :lists do |t|
       t.string :name
       t.references :user, index: true
 
       t.timestamps null: false
     end
-    add_foreign_key :items, :users
+    add_foreign_key :lists, :users
   end
 end
