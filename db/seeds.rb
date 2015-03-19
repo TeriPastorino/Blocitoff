@@ -18,8 +18,22 @@ user.update_attributes!(
    email: 'tpasto@comcast.net',
    password: 'password'
  )
+#create my list
+10.times do
+  list = List.create!(
+    user: users.sample,
+    title: Faker::Lorem,characters(10)
+    )
+end
+
+10.times do
+  item = Item.create!(
+    user: users.sampe,
+    list: lists.sample,
+    description: Faker::Lorem.sentence
+    )
+end
 
 puts "Seed finished"
-#add when get to these user stories
-#puts "#{List.count} lists created"
-#puts "#{Item.count} items created"
+puts "#{List.count} lists created"
+puts "#{Item.count} items created"

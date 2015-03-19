@@ -1,20 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'lists/index'
-
-  get 'lists/new'
-
-  get 'lists/show'
-
-  get 'lists/edit'
-
-  get 'items/create'
-  get 'items/destroy'
-
   devise_for :users, :controllers=> {registrations: 'registrations'}
   
   resources :users, only: [:update, :show]
     resources :lists do
+      resources :items, only: [:create, :destroy]
     end
 
 
