@@ -1,6 +1,10 @@
 class ListsController < ApplicationController
+  
+  # need to add some authorization
+  #before_action :current_user?
+  
   def index
-    @lists = current_user.lists
+    @lists = List.visible_to(current_user)
   end
 
   def new

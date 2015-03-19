@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers=> {registrations: 'registrations'}
   
   resources :users, only: [:update, :show]
-    resources :lists do
+    resources :lists, only: [:new, :create] do
       resources :items, only: [:create, :destroy]
     end
 
