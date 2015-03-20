@@ -10,23 +10,20 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def show
-    @user = User.find()
-    @item = Item.find(params[:id])
-    @lists = @list.items
-  end
-
   def create
-    @item = Item.new(item_params)
-      if @item.save
-        redirect_to users_show_path notice "Items successfully added to List."
-      else
-        flash[:error] = "Error adding item. Please try again."
-        render:new
-      end
+
+    @item = current_user.items.build(item_params)
+    if @item.save
+      redirect_to user_path(current_user), notice: "You have added an Item to your List."
+    else
+      flash[:error] = "Error adding item. Please try again."
+      render:new
     end
-    #@item.list = @list
-    #@item.save!
+  end
+    
+    def update
+      if @item.update(item_params)
+    end
 
 
   end
@@ -38,7 +35,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:body)
+    params.require(:item).permit(:description)
   end
 
 end

@@ -20,22 +20,12 @@ user.update_attributes!(
  )
 
 
-#create my list
-10.times do
-  list = List.create!(
-    user: users.sample,
-    name: Faker::Lorem.sentence(10)
-    )
-end
-lists = List.all
-
 10.times do
   item = Item.create!(
-    list: lists.sample,
+    user: users.sample,
     description: Faker::Lorem.sentence
     )
 end
 
 puts "Seed finished"
-puts "#{List.count} lists created"
 puts "#{Item.count} items created"
