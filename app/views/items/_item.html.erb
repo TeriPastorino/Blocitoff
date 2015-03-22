@@ -1,1 +1,5 @@
     <li class=" list-group-item"><%= item.description %></li>
+
+    <% @user.items do |item| %>
+      <%= link_to " ", user_path, method: :delete, class: 'glyphicon glyphicon-ok glyph-right' %>
+      <% end %>
