@@ -39,10 +39,8 @@ class ItemsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to(user_path(current_user)) }
+      format.html { redirect_to user_path(current_user) }
       format.js
-
-
     end
   end
 
