@@ -1,18 +1,17 @@
 require 'rails_helper'
 
-
-
-describe "todo items" do
-  include TestFactories
-  #before { login_as FactoryGirl.create(:user) } do
-  before { warden.set_user FactoryGirl.create(:user)}
 describe "successfully" do
-  it "can display" do
-    visit user_session_path
-    sign_in @user
-    fill_in "Description", with: "Really long text"
+    let!(:user) { FactoryGirl.create(:user) } 
+    it "displays a flash message indicating success" do
+      visit user_session_path #visit users/sign_in page
+      fill_in 'Email',    with: user.email
+      fill_in 'Password', with: user.password
+      click_button "Sign In"
+      expect(current_path).to eq user_path(user)
+      
+    fill_in 'Description', with: "Really long text"
     click_button('Add Item To List')
-    expect(page). to have_content "Really long text"
+    expect(page).to have_content "Really long text"
   end
 end
 #? can you loop x num of times
@@ -21,7 +20,7 @@ xit "can create multiple" do
   sign_in @user
     3.times do
       fill_in "Description", with: "Really long text"
-      click_button 'Add Item To List'
+      click_button "Add Item To List"
   end
   end
 #is click_link proper for selecting the glyph and how do i tell it which one?
@@ -36,5 +35,4 @@ xit "can create multiple" do
     click_link 'glyphicon glyphicon-ok'
     expect
   end
-end
-end
+

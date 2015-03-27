@@ -44,4 +44,5 @@ end
 gem 'devise'
 gem 'figaro'
 gem 'faker'
-
+gem 'capybara-webkit'
+gem 'pry'

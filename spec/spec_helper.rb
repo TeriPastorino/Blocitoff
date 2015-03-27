@@ -17,12 +17,6 @@ require 'factory_girl_rails'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  
-  config.include Warden::Test::Helpers
-  config.before :suite do
-    Warden.test_mode!
-  end
-
   #config.include FactoryGirl::Syntax::Methods
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
