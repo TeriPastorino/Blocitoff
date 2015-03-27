@@ -46,3 +46,4 @@ gem 'figaro'
 gem 'faker'
 gem 'capybara-webkit'
 gem 'pry'
+gem 'launchy', "~> 2.4.2"

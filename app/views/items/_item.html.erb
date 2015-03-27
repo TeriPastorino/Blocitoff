@@ -2,7 +2,7 @@
 
 <%= item.description %>
   <%= link_to " ", [current_user, item], method: :delete, class: 'glyphicon glyphicon-ok pull-right', remote: true %></li>
-
+  <%= item.days_left.to_s + "days left to complete" %>
   <% end %>
 
     
