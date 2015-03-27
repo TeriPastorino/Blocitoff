@@ -6,4 +6,13 @@ class Item < ActiveRecord::Base
   end
 
 
+  def format_days_remaining(days_left)
+  if days_left >= 6
+    format .green
+  elsif days_left >= 4
+    format .yellow
+  else
+    format .red
+      
+end
 end
