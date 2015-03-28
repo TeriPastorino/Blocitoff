@@ -20,7 +20,7 @@ describe "User registration" do
     end
   end
 
-describe "witout validation errors" do
+describe "without validation errors" do
   it "redirects to the index page" do
     signup('newuser', 'newuser@example.com', 'password')
     expect(current_path).to eq "/"

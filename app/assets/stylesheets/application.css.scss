@@ -1,5 +1,6 @@
-
- @import "bootstrap";
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
  
 
  .jumbotron {
@@ -28,3 +29,4 @@ a {
 .nav {
   margin-top: 5px;
 }
+

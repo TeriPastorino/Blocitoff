@@ -1,14 +1,13 @@
 
 <h3>Hello <%= @user.name %></h3>
-<p>Name: <%= @user.name if @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
 <div class="row">
   <div class="col-md-8">
-    <ul class = "list-group" >
-      <h3 class="text-center">My To Do's</h3>
+    <h3 class="text-center">Your To Do's</h3>
+      <ul class = "list-group" >
+        <%= render @items %>
       </ul>
-    </div>
+      <%= render "items/form" %>
   </div>
 </div>
+  
 
-</body>

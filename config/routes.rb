@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers=> {registrations: 'registrations'}
-  resources :users, only: [:update, :show]
   
+  resources :users, only: [:update, :show] do
+    resources :items, only: [:create, :show, :destroy]
+    end
 
 
   get 'welcome/index'
