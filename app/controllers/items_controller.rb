@@ -14,19 +14,21 @@ class ItemsController < ApplicationController
 
     @item = current_user.items.build(item_params)
     if @item.save
-      redirect_to user_path(current_user), notice: "You have added an Item to your List."
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user), notice: "\"#{description}\" was added successfully." }
+        format.js
+
+      end    
     else 
       flash[:error] = "Error adding item. Please try again."
       redirect_to user_path(current_user)
-    end    
+
+
+    end  
+
   end
     
-    def update
-      if @item.update(item_params)
-    end
 
-
-  end
 
   def destroy
     @item = Item.find(params[:id])

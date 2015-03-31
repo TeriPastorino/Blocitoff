@@ -3,9 +3,9 @@
 @import "bootstrap";
  
 
- .jumbotron {
-    background-color:#b2d9d8;
-    color: #6e4942;
+.jumbotron {
+  background-color:#b2d9d8;
+  color: #6e4942;
 }
 
 a {
@@ -30,10 +30,6 @@ a {
   margin-top: 5px;
 }
 
-#status {
-  
-}
-
 .active {
   color: green;
 }
@@ -44,4 +40,8 @@ a {
 
 .critical {
   color: red;
+}
+
+.todo-item:nth-child(odd) {
+  background-color: red;
 }
