@@ -4,19 +4,11 @@ module UsersHelper
     if days_left >= 6
       "active"
     elsif days_left <= 4 
-      "urgent"
+      "pending"
     else 
-      "critical"
+      "urgent"
     end
   end
 
 end
 
-# def check_sign(number)
-#   if number > 0
-#     "#{number} is positive"
-#   else
-#     "#{number} is negative"
-#   end        
-# end
-#end

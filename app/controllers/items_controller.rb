@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   
 
   def index
-    @items = Item.visible_to(current_user)
+    @item = Item.visible_to(current_user)
   end
 
   #initialize task as instance variable
