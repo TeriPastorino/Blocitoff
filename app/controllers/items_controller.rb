@@ -15,10 +15,10 @@ class ItemsController < ApplicationController
     @item = current_user.items.build(item_params)
     if @item.save
       redirect_to user_path(current_user), notice: "You have added an Item to your List."
-    else
+    else 
       flash[:error] = "Error adding item. Please try again."
-      render:new
-    end
+      redirect_to user_path(current_user)
+    end    
   end
     
     def update
@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     description = @item.description
+
 
     if @item.destroy
       flash[:notice] = "\"#{description}\" was deleted successfully."

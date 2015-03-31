@@ -2,12 +2,12 @@
 
 <%= content_tag :li, class: 'list-group-item', id: "item-#{item.id}" do %>
 <%= item.description %>
-  <%= link_to " ", [current_user, item],  method: :delete, class: 'glyphicon glyphicon-ok pull-right', remote: true %></li>
-  <%= item.days_left.to_s + "days left to complete" %>
+  <%= link_to " ", [current_user, item],  method: :delete, class: 'glyphicon glyphicon-ok pull-right', remote: true %>
+  <div class="text-center-small">
+  <small><%= item.days_left.to_s. + " days left to complete"  %></small>
   <% end %>
+  </li>
   </div>
 
     
       
-     
-
