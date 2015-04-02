@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
     @item = current_user.items.build(item_params)
     if @item.save
       respond_to do |format|
-        format.html { redirect_to user_path(current_user), notice: "\"#{description}\" was added successfully." }
+        format.html { redirect_to user_path(current_user), notice: "\"#{@item.description}\" was added successfully." }
         format.js
       end    
     else 
