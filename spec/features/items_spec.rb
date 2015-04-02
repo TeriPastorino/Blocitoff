@@ -8,31 +8,37 @@ describe "Items", js: true do
     visit user_path(user)
     expect(current_path).to eq user_path(user)
   end
+
   describe "creation" do
+    let!(:item) {FactoryGirl.create(:item) }
     it "adds a todo" do
-      fill_in 'Description', with: "Really long text"
+      fill_in 'Description', with: :item
       expect do 
         click_button 'Add Item To List'
-      end.to change {user.items.count}.by 1
-      expect(page).to have_content "Really long text"
+      expect(items).to change {user.items.count}.by(1)
     end
+    end
+  end
 
+  describe "creation" do
+    let!(:item) {FactoryGirl.create(:item) }
     it "adds multiple todo's" do
       3.times do |i|
-        fill_in "Description", with: "Really long text #{i}"
+        fill_in "Description", with: :item {i}
         click_button "Add Item To List"
-        expect(page).to have_content "Really long text #{i}"        
+      end
+        expect(items).to change {user.items.count}.by(3)
+        end
       end
     end
-  end
+  
+
 
   describe "deletion" do
-    it "using ajax" do
+    xit "using ajax" do
     end
 
-    it "multiple" do
+    xit "multiple" do
     end
   end
-end
-#? can you loop x num of times
-#moved everything else to pending items
+

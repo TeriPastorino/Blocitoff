@@ -1,4 +1,4 @@
-<%= content_tag :li, class: 'list-group-item todo-item', id: "item-#{item.id}" do %>
+<%= content_tag :li, class: 'list-group-item todo-item-even todo-item-odd', id: "item-#{item.id}" do %>
   <%= item.description %>
   <%= link_to " ", [current_user, item],  method: :delete, class: 'glyphicon glyphicon-ok pull-right', remote: true %>
   <div class="text-center-small">

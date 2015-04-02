@@ -17,6 +17,10 @@
   color: red;
 }
 
-.todo-item:nth-child(odd) {
-  background-color: #DFE3EE;
+.todo-item-odd:nth-child(odd) {
+  background-color: #B8D4DC;
+}
+
+.todo-item-even:nth-child(even) {
+  background-color: #CCEBF5;
 }
