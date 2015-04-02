@@ -37,7 +37,7 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
   #added after writing user test and getting local host error message
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'blocitoff-tp.herokuapp.com' }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

@@ -3,3 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+.active {
+  color: green;
+}
+
+.pending {
+  color: yellow;
+}
+
+.urgent {
+  color: red;
+}
+
+.todo-item-odd:nth-child(odd) {
+  background-color: #B8D4DC;
+}
+
+.todo-item-even:nth-child(even) {
+  background-color: #CCEBF5;
+}

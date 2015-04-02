@@ -1,18 +1,14 @@
 class Item < ActiveRecord::Base
   belongs_to :user
 
+  validates :description, length: {minimum: 5}, presence: true
+  default_scope {order "created_at DESC"}
+
   def days_left
-    (DateTime.now.to_date - created_at.to_date).to_i
+     7 -(DateTime.now.to_date - created_at.to_date).to_i
   end
+end
 
 
-  def format_days_remaining(days_left)
-  if days_left >= 6
-    format .green
-  elsif days_left >= 4
-    format .yellow
-  else
-    format .red
-      
-end
-end
+  
+

@@ -1,12 +1,16 @@
-
-<h3>Hello <%= @user.name %></h3>
-<div class="row">
-  <div class="col-md-8">
-    <h3 class="text-center">Your To Do's</h3>
-      <ul class = "list-group" >
+<div class="container-fluid">
+  <h3>Hello <%= @user.name %></h3>
+  <div class="row">
+    <div class="col-md-lg">
+      <h3 class="text-center">Your To Do's</h3>
+      <div>
+        <%= render "items/form" %>
+      </div>
+      <ul class = "list-group js-items" >
         <%= render @items %>
       </ul>
-      <%= render "items/form" %>
+
+    </div>
   </div>
 </div>
   

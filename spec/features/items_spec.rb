@@ -1,38 +1,39 @@
 require 'rails_helper'
-
+def login(user)
+  visit user_session_path #visit users/sign_in page
+  fill_in 'Email',    with: user.email
+  fill_in 'Password', with: user.password
+  click_button "Sign In"
+  expect(current_path).to eq user_path(user)
+  expect(page).to have_content(user.name)
+end
 #this is failing even though it says passing
-describe "Items", js: true do
+describe "Items" do
   let!(:user) { FactoryGirl.create(:user) } 
   before do
-    login_as(user, scope: :user, run_callbacks: false) 
-    visit user_path(user)
-    expect(current_path).to eq user_path(user)
+    login(user)
   end
+
   describe "creation" do
     it "adds a todo" do
-      fill_in 'Description', with: "Really long text"
+      fill_in 'Description', with: "Do Item"
       expect do 
         click_button 'Add Item To List'
-      end.to change {user.items.count}.by 1
-      expect(page).to have_content "Really long text"
-    end
-
-    it "adds multiple todo's" do
-      3.times do |i|
-        fill_in "Description", with: "Really long text #{i}"
-        click_button "Add Item To List"
-        expect(page).to have_content "Really long text #{i}"        
-      end
+      end.to change {user.items.count}.by(1)
     end
   end
 
-  describe "deletion" do
-    it "using ajax" do
-    end
-
-    it "multiple" do
+  describe "creation" do
+    it "adds multiple todo's" do
+      3.times do |i|
+        fill_in "Description", with: "Do Item #{i}"
+        click_button "Add Item To List"
+        expect(page).to have_content("Do Item #{i}")
+      end 
     end
   end
 end
-#? can you loop x num of times
-#moved everything else to pending items
+
+
+
+
